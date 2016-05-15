@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { List } from 'immutable';
 
 import ItemList from '../components/ItemList';
+import AddThingForm from './AddThingForm';
 
 class Things extends React.Component {
     static propTypes = {
@@ -23,7 +24,13 @@ class Things extends React.Component {
     }
 
     render() {
-        return <ItemList items={this.props.things} removeItem={this.removeThing} />;
+        return (
+            <ItemList
+                items={this.props.things}
+                removeItem={this.removeThing}
+                AddItemForm={AddThingForm}
+            />
+        );
     }
 }
 

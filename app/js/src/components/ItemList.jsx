@@ -15,14 +15,16 @@ const ItemList = (props) => {
     );
     return (
         <div>
-            {items}
+            <div className="item-list">{items}</div>
+            <props.AddItemForm />
         </div>
     );
 };
 
 ItemList.propTypes = {
     items: React.PropTypes.instanceOf(List),
-    removeItem: React.PropTypes.func
+    removeItem: React.PropTypes.func,
+    AddItemForm: React.PropTypes.any
 };
 
 export default ItemList;
