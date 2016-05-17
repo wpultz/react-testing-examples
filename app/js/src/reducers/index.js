@@ -1,5 +1,6 @@
 import { Map, List } from 'immutable';
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 import {
     SET_THING_NAME, ADD_THING, REMOVE_THING
@@ -19,6 +20,7 @@ export function thingReducer(state = List(), action) {
 }
 
 const rootReducer = combineReducers({
+    form: formReducer,
     things: thingReducer
 });
 
