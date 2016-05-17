@@ -8,7 +8,7 @@ const ItemList = (props) => {
         <Item
             key={idx}
             idx={idx}
-            id={item.get('id')}
+            id={String(item.get('id'))}
             name={item.get('name')}
             removeItem={props.removeItem}
         />

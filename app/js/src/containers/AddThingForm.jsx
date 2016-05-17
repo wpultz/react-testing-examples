@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { addThing } from '../actions';
+
 class AddThingForm extends React.Component {
     static propTypes = {
         dispatch: React.PropTypes.func
@@ -8,15 +10,13 @@ class AddThingForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.addThing = ::this.addThing;
+        this.handleSubmit = ::this.handleSubmit;
     }
 
-    addThing() {
-        this.props.dispatch({
-            type: 'ADD_THING',
-            id: this.refs.thingId.value,
-            name: this.refs.thingName.value
-        });
+    handleSubmit() {
+        this.props.dispatch(addThing(this.refs.thingId.value, this.refs.thingName.value));
+        this.refs.thingId.value = '';
+        this.refs.thingName.value = '';
     }
 
     render() {
@@ -24,7 +24,7 @@ class AddThingForm extends React.Component {
             <div>
                 <label>Id: <input ref={'thingId'} type={'text'} /></label>
                 <label>Name: <input ref={'thingName'} type={'text'} /></label>
-                <button onClick={this.addThing}>Add Thing</button>
+                <button onClick={this.handleSubmit}>Add Thing</button>
             </div>
         );
     }

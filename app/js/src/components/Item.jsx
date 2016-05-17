@@ -3,7 +3,7 @@ import React from 'react';
 class Item extends React.Component {
     static propTypes = {
         idx: React.PropTypes.number,
-        id: React.PropTypes.number,
+        id: React.PropTypes.string,
         name: React.PropTypes.string,
         removeItem: React.PropTypes.func
     }

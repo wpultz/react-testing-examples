@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
 
+import { removeThing } from '../actions';
 import ItemList from '../components/ItemList';
 import AddThingForm from './AddThingForm';
 
@@ -17,10 +18,7 @@ class Things extends React.Component {
     }
 
     removeThing(id) {
-        this.props.dispatch({
-            type: 'REMOVE_THING',
-            id
-        });
+        this.props.dispatch(removeThing(id));
     }
 
     render() {
