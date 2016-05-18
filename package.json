@@ -7,7 +7,7 @@
     "test": "karma start --single-run",
     "devserver": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.dev.js --hot-inline",
     "expserver": "node index.js",
-    "run": "npm run devserver | npm run expserver"
+    "start": "npm run devserver | npm run expserver"
   },
   "repository": {
     "type": "git",

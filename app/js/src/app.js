@@ -9,7 +9,11 @@ import reducer from './reducers';
 import Things from './containers/Things';
 import Signup from './containers/Signup';
 
-const store = createStore(reducer, things);
+const store = createStore(
+    reducer,
+    things,
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+);
 
 render(
     <Provider store={store}>
