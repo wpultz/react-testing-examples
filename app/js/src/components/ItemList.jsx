@@ -13,10 +13,11 @@ const ItemList = (props) => {
             removeItem={props.removeItem}
         />
     );
+    const addForm = props.AddItemForm ? <props.AddItemForm /> : null;
     return (
         <div>
             <div className="item-list">{items}</div>
-            <props.AddItemForm />
+            {addForm}
         </div>
     );
 };

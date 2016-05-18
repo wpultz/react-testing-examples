@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var webpackConf = require('./webpack.config.test');
+var webpackConf = require('./webpack.config.dev');
 
 module.exports = function (config) {
 
@@ -13,7 +13,7 @@ module.exports = function (config) {
     if (runCoverage) {
         coverageLoaders.push({
             test: /\.jsx?/,
-            include: path.resolve(__dirname, 'app/js'),
+            include: path.resolve(__dirname, 'app/js/src'),
             loader: 'isparta'
         });
 
@@ -40,20 +40,19 @@ module.exports = function (config) {
             devtool: 'inline-source-map',
             module: {
                 loaders: [
-                    { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' }
+                    { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel'] }
                 ].concat(coverageLoaders)
             },
             plugins: [
-                new webpack.DefinePlugin({
-                    'process.env.NODE_ENV': JSON.stringify('test')
-                })
+                new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('test') })
             ],
             resolve: webpackConf.resolve,
             // this is for enzyme to work properly on react 14/15
             externals: {
                 cheerio: 'window',
                 'react/lib/ExecutionEnvironment': true,
-                'react/lib/ReactContext': true
+                'react/lib/ReactContext': true,
+                'react/addons': true
             }
         },
 

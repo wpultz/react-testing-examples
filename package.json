@@ -4,7 +4,7 @@
   "description": "karma, mocha, phantomjs testing setup + testing redux action creators/reducers and react components",
   "main": "index.js",
   "scripts": {
-    "test": "karma start --single-run",
+    "test": "NODE_ENV=testing karma start --single-run",
     "devserver": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.dev.js --hot-inline",
     "expserver": "node index.js",
     "start": "npm run devserver | npm run expserver"
@@ -55,6 +55,7 @@
     "isparta-loader": "^2.0.0",
     "karma": "^0.13.22",
     "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^1.0.1",
     "karma-mocha": "^1.0.1",
     "karma-mocha-reporter": "^2.0.3",
     "karma-phantomjs-launcher": "^1.0.0",
