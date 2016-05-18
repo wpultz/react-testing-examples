@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { addThing } from '../actions';
 
-class AddThingForm extends React.Component {
+export class AddThingForm extends React.Component {
     static propTypes = {
         dispatch: React.PropTypes.func
     }

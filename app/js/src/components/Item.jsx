@@ -18,11 +18,14 @@ class Item extends React.Component {
     }
 
     render() {
+        const removeBtn = this.props.removeItem
+            ? <button onClick={this.handleRemove}>Remove</button>
+            : null;
         return (
             <div>
                 <div>Id: {this.props.id}</div>
                 <div>Name: {this.props.name}</div>
-                <button onClick={this.handleRemove}>Remove</button>
+                {removeBtn}
             </div>
         );
     }

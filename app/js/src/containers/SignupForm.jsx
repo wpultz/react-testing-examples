@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import ErrorMsg from '../components/ErrorMsg';
 
-class SignupForm extends React.Component {
+export class SignupForm extends React.Component {
     static propTypes = {
         handleSubmit: React.PropTypes.func,
         submitFailed: React.PropTypes.bool,

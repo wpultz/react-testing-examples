@@ -3,7 +3,7 @@ import React from 'react';
 import SignupForm from './SignupForm';
 import SuccessMsg from '../components/SuccessMsg';
 
-class Signup extends React.Component {
+export default class Signup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,5 +45,3 @@ class Signup extends React.Component {
         );
     }
 }
-
-export default Signup;
