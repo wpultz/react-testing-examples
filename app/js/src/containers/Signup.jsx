@@ -1,9 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
+
+import { thingSignup, thingSignupReset } from '../actions';
 
 import SignupForm from './SignupForm';
 import SuccessMsg from '../components/SuccessMsg';
 
-export default class Signup extends React.Component {
+export class Signup extends React.Component {
+    static propTypes = {
+        dispatch: React.PropTypes.func,
+        things: React.PropTypes.instanceOf(Map)
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -18,19 +27,19 @@ export default class Signup extends React.Component {
             if (!email) {
                 rej({ email: 'email is required' });
             } else {
-                this.setState({ signedUp: true });
+                this.props.dispatch(thingSignup());
                 res();
             }
         });
     }
 
     reset() {
-        this.setState({ signedUp: false });
+        this.props.dispatch(thingSignupReset());
     }
 
     render() {
         let msg;
-        if (this.state.signedUp) {
+        if (this.props.things.get('signedUp')) {
             msg = (
                 <div>
                     <SuccessMsg msg={'thanks for signing up!'} />
@@ -45,3 +54,8 @@ export default class Signup extends React.Component {
         );
     }
 }
+
+const selector = state => ({
+    things: state.things
+});
+export default connect(selector)(Signup);

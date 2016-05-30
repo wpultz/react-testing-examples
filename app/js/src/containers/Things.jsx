@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { List } from 'immutable';
+import { Map } from 'immutable';
 
 import { removeThing } from '../actions';
 import ItemList from '../components/ItemList';
@@ -9,7 +9,7 @@ import AddThingForm from './AddThingForm';
 class Things extends React.Component {
     static propTypes = {
         dispatch: React.PropTypes.func,
-        things: React.PropTypes.instanceOf(List)
+        things: React.PropTypes.instanceOf(Map)
     }
 
     constructor(props) {
@@ -22,9 +22,10 @@ class Things extends React.Component {
     }
 
     render() {
+        const thingOptions = this.props.things.get('options');
         return (
             <ItemList
-                items={this.props.things}
+                items={thingOptions}
                 removeItem={this.removeThing}
                 AddItemForm={AddThingForm}
             />
