@@ -1,3 +1,6 @@
+/*
+eslint-disable no-var, func-names, padded-blocks, object-shorthand, space-before-function-paren
+*/
 var webpack = require('webpack');
 var path = require('path');
 
@@ -10,6 +13,7 @@ module.exports = function (config) {
     var coverageLoaders = [];
     var coverageReporters = [];
 
+    // set upthe coverage loader and reporter, specifying the path you want to record coverage on
     if (runCoverage) {
         coverageLoaders.push({
             test: /\.jsx?/,
@@ -34,18 +38,22 @@ module.exports = function (config) {
             'tests.webpack.js': ['webpack', 'sourcemap']
         },
 
+        // add the coverage reporter
         reporters: ['mocha'].concat(coverageReporters),
 
         webpack: {
             devtool: 'inline-source-map',
             module: {
+                // add the coverage loader to the usuals
                 loaders: [
                     { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel'] }
                 ].concat(coverageLoaders)
             },
+            // set the node environment to test
             plugins: [
                 new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('test') })
             ],
+            // borrow the resolvers from the webpack config
             resolve: webpackConf.resolve,
             // this is for enzyme to work properly on react 14/15
             externals: {
@@ -60,19 +68,6 @@ module.exports = function (config) {
             noInfo: true
         },
 
-        babelPreprocessor: {
-            options: {
-                presets: ['es2015'],
-                sourceMap: 'inline'
-            },
-            filename: function(file) {
-                return file.originalPath.replace(/\.js$/, '.es5.js');
-            },
-            sourceFileName: function(file) {
-                return file.originalPath;
-            }
-        },
-
         coverageReporter: {
             reporters: [
                 { type: 'html', subdir: 'html' },
@@ -83,3 +78,5 @@ module.exports = function (config) {
         singleRun: true
     });
 };
+
+/* eslint-enable */

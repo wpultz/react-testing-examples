@@ -1,4 +1,6 @@
+/* eslint-disable no-var */
 var webpack = require('webpack');
+/* eslint-enable */
 
 module.exports = {
     devtool: 'source-map',
