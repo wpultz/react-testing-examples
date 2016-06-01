@@ -1,1 +1,1 @@
-import Things from '../../src/containers/Things';
+import '../../src/containers/Things';

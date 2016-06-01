@@ -1,1 +1,1 @@
-import { SignupForm } from '../../src/containers/SignupForm';
+import '../../src/containers/SignupForm';
